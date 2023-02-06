@@ -81,7 +81,7 @@ $image-size-desktop: rem(64px);
             $image-name: "icon-calculator";
         }
 
-        background-image: #{ "url('../../images/" + $image-name + ".svg')" };
+        background-image: #{ "url('../images/" + $image-name + ".svg')" };
     }
 }
 
