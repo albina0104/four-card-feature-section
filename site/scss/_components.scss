@@ -1,10 +1,5 @@
 @use "base" as *;
 
-%centering {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .main-content {
     @extend %centering;
     text-align: center;
@@ -13,7 +8,7 @@
     max-width: rem(505px);
 }
 
-$main-heading-size: 1.5rem;
+$main-heading-size: clamp(1.5rem, 6.4vw, 2.28rem);
 
 %heading {
     font-size: $main-heading-size;
@@ -39,6 +34,7 @@ $main-heading-size: 1.5rem;
 }
 
 $image-size: rem(57px);
+$image-size-desktop: rem(64px);
 
 %card-decoration {
     &::before {
@@ -58,6 +54,10 @@ $image-size: rem(57px);
         background-position: right;
         background-repeat: no-repeat;
         background-size: contain;
+
+        @include desktop {
+            height: $image-size-desktop;
+        }
     }
 }
 

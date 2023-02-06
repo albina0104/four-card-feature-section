@@ -17,6 +17,17 @@ $font: 'Poppins', sans-serif;
     @return $remValue;
 }
 
+@mixin desktop {
+    @media screen and (min-width: rem(992px)) {
+        @content;
+    }
+}
+
+%centering {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;

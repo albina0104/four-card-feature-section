@@ -1,0 +1,38 @@
+@use "base" as *;
+
+$gap: rem(30px);
+
+.cards {
+    @extend %centering;
+
+    @include desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: $gap;
+        max-width: rem(1110px);
+    }
+}
+
+@include desktop {
+    .card {
+        margin-bottom: 0;
+
+        &--cyan {
+            grid-area: 2 / 1 / 4 / 2;
+        }
+        &--red {
+            grid-area: 1 / 2 / 3 / 3;
+        }
+        &--orange {
+            grid-area: 3 / 2 / 5 / 3;
+        }
+        &--blue {
+            grid-area: 2 / 3 / 4 / 4;
+        }
+    }
+
+    .attribution {
+        padding-top: $gap;
+    }
+}
