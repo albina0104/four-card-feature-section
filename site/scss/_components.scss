@@ -1,0 +1,135 @@
+@use "base" as *;
+
+%centering {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-content {
+    @extend %centering;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 78px;
+    max-width: rem(505px);
+}
+
+$main-heading-size: 1.5rem;
+
+%heading {
+    font-size: $main-heading-size;
+    color: $very-dark-blue;
+}
+
+.heading--1 {
+    @extend %heading;
+    font-weight: 200;
+    line-height: 1.6;
+}
+
+.heading--2 {
+    @extend %heading;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.main-p {
+    font-size: rem(15.2px);
+    color: $grayish-blue;
+    line-height: 1.6;
+}
+
+$image-size: rem(57px);
+
+%card-decoration {
+    &::before {
+        height: rem(4px);
+        width: 100%;
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        height: $image-size;
+        display: block;
+        content: "";
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+@mixin card-decoration($color) {
+    @extend %card-decoration;
+
+    &::before {
+        background-color: #{$color};
+    }
+
+    &::after {
+        $image-name: "";
+
+        @if $color == $cyan {
+            $image-name: "icon-supervisor";
+        } @else if $color == $red {
+            $image-name: "icon-team-builder";
+        } @else if $color == $orange {
+            $image-name: "icon-karma";
+        } @else if $color == $blue {
+            $image-name: "icon-calculator";
+        }
+
+        background-image: #{ "url('../../images/" + $image-name + ".svg')" };
+    }
+}
+
+.card {
+    @extend %centering;
+    box-shadow: 0 10px 20px hsla(206, 55%, 35%, 0.233);
+    border-radius: rem(10px);
+    padding: 23px 30px 30px 30px;
+    margin-bottom: rem(25px);
+    position: relative;
+    overflow: hidden;
+    line-height: 1.8;
+    background-color: white;
+    max-width: rem(350px);
+
+    &--cyan {
+        @include card-decoration($cyan);
+    }
+
+    &--red {
+        @include card-decoration($red);
+    }
+
+    &--orange {
+        @include card-decoration($orange);
+    }
+
+    &--blue {
+        @include card-decoration($blue);
+    }
+}
+
+.card__heading {
+    color: $very-dark-blue;
+    font-size: 1.25rem;
+}
+
+.card__text {
+    padding-bottom: 32px;
+    color: $grayish-blue;
+    font-size: 0.82rem;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
