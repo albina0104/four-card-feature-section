@@ -10,21 +10,16 @@
 
 $main-heading-size: clamp(1.5rem, 6.4vw, 2.28rem);
 
-%heading {
+.main-heading {
     font-size: $main-heading-size;
     color: $very-dark-blue;
-}
-
-.heading--1 {
-    @extend %heading;
     font-weight: 200;
     line-height: 1.6;
-}
-
-.heading--2 {
-    @extend %heading;
-    font-weight: 600;
     padding-bottom: 15px;
+
+    & b {
+        font-weight: 600;
+    }
 }
 
 .main-p {
